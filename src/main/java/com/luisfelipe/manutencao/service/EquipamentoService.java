@@ -99,8 +99,8 @@ public class EquipamentoService {
 
     public LocalDate dataUltimaManutencao(Long id){
         List<Manutencao> list = manutencaoRepository.findByEquipamentoId(id);
-        if(list.isEmpty()){
-            throw new ManutencaoNaoEncontrada("Manutenção não encontrada!");
+        if (list.isEmpty()) {
+            return buscaPorId(id).getDataInstalacao();
         }
         LocalDate ultimaManutencao = list.getFirst().getDataManutencao();
         for (int i = 0; i < list.size(); i++) {
